@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import pageObjects.LandingPage;
 import utils.TestContextSetup;
 
 public class LandingPagestepDefinition 
@@ -31,9 +32,10 @@ public class LandingPagestepDefinition
 	}
 	@When("user searched with ShortName {string} and extracted actual product name")
 	public void user_searched_with_short_name_and_extracted_actual_product_name(String tom) throws InterruptedException {
-		testContextSetup.driver.findElement(By.xpath("//input[contains(@placeholder,'Vegetables')]")).sendKeys(tom);
+		LandingPage landingpage=new LandingPage(testContextSetup.driver);
+		landingpage.searchingProduct(tom);
 		Thread.sleep(2000);
-		testContextSetup.prodName=testContextSetup.driver.findElement(By.xpath("//h4[@class='product-name']")).getText().split("-")[0].trim();
+		testContextSetup.prodName=landingpage.extractingName().split("-")[0].trim();
 		System.out.println(testContextSetup.prodName+" it is extracted from the name");
 	}
 } 

@@ -46,7 +46,7 @@ public class SearchProdStepDefinition
 	{
 		System.out.println(offerPageProdName+" testing");
 		System.out.println(testContextSetup.prodName+" testing");
-		Thread.sleep(2000);
+		Thread.sleep(2200);
 		assertEquals(offerPageProdName, testContextSetup.prodName);
 	}	 
 	}
